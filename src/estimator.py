@@ -2,8 +2,8 @@ import json
 import math
 import numpy as np
 
-with open("BuildforSDG-Cohort1-Assessment\\src\\data.json","r") as read_file:
-  data = json.load(read_file)
+# with open("data.json","r") as read_file:
+#   data = json.load(read_file)
 
 def estimator(data):
       
@@ -59,5 +59,3 @@ def servereImpact(data):
     "casesForVentilatorsByRequestedTime" : math.trunc(casesForVentilatorsByRequestedTime),
     "dollarsInFlight" : math.trunc(dollarsInFlight)
   })
-
-estimator(data)

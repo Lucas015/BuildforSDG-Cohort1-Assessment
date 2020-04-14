@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>BuildforSDG Challenge 2020 Skill Assessment Test</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{{ url_for('static', filename='css/bootstrap.min.css')}}"
+      rel="stylesheet"
+    />
+    <!-- Material Design Bootstrap -->
+    <link  href="{{ url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet" />
+
+    <style>
+      html,
+      body,
+      header,
+      .view {
+        height: 100%;
+      }
+
+      @media (min-width: 851px) and (max-width: 1440px) {
+        html,
+        body,
+        header .view {
+          height: 850px;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+        html,
+        body,
+        header,
+        .view {
+          height: 1000px;
+        }
+      }
+
+      @media (min-width: 451px) and (max-width: 740px) {
+        html,
+        body,
+        header,
+        .view {
+          height: 1200px;
+        }
+      }
+
+      @media (max-width: 450px) {
+        html,
+        body,
+        header,
+        .view {
+          height: 1400px;
+        }
+      }
+
+      .intro-2 {
+        background: url("http://mdbootstrap.com/img/Photos/Others/forest1.jpg")
+          no-repeat center center;
+        background-size: cover;
+      }
+
+      .top-nav-collapse {
+        background-color: #3f51b5 !important;
+      }
+
+      .navbar:not(.top-nav-collapse) {
+        background: transparent !important;
+      }
+
+      @media (max-width: 768px) {
+        .navbar:not(.top-nav-collapse) {
+          background: #3f51b5 !important;
+        }
+      }
+      @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+          background: #3f51b5 !important;
+        }
+      }
+
+      .rgba-gradient {
+        background: -webkit-linear-gradient(
+          98deg,
+          rgba(22, 91, 231, 0.5),
+          rgba(255, 32, 32, 0.5) 100%
+        );
+        background: -webkit-gradient(
+          linear,
+          98deg,
+          from(rgba(22, 91, 231, 0.5)),
+          to(rgba(255, 32, 32, 0.5))
+        );
+        background: linear-gradient(
+          to 98deg,
+          rgba(22, 91, 231, 0.5),
+          rgba(255, 32, 32, 0.5) 100%
+        );
+      }
+
+      .card {
+        background-color: rgba(255, 255, 255, 0.85);
+      }
+
+      h6 {
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--Main Navigation-->
+    <header>
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <strong>For  #BuildforSDG Challenge 2020</strong>
+          </a>
+        </div>
+      </nav>
+      <!-- Navbar -->
+
+      <!--Intro Section-->
+      <section class="view intro-2">
+        <div class="mask rgba-gradient">
+          <div
+            class="container h-100 d-flex justify-content-center align-items-center"
+          >
+            <!--Grid row-->
+            <div class="row pt-5 mt-3">
+              <!--Grid column-->
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h2
+                      class="font-weight-bold my-4 text-center mb-5 mt-4 font-weight-bold"
+                    >
+                      <strong>COVID-19 Infections Estimator</strong>
+                    </h2>
+                    <hr />
+
+                    <!--Grid row-->
+                    <div class="row mt-5">
+                      
+                      <!--Grid column-->
+                      <div class="col-md-5">
+
+                        <!--Body-->
+                        <form action="{{ url_for('save_estimation') }}" method="post">
+                          <div class="md-form">
+                            <i class="fa fa-users prefix"></i>
+                            <input class="form-control" name="population" id="population" data-population="population" type="number">
+
+                            <label for="population">Population</label>
+                          </div>
+                          <div class="md-form">
+                            <i class="fa fa-clock-o prefix"></i>
+                            <input class="form-control" name="timeToElapse" id="timeToElapse" data-time-to-elapse="timeToElapse" type="number">
+
+                            <label for="timeToElapse">Time Elapse</label>
+                          </div>
+  
+                          <div class="md-form">
+                            <i class="fa fa-flag prefix"></i>
+                            <input class="form-control" name="reportedCases" id="reportedCases" data-reported-cases="reportedCases" type="number">
+
+                            <label for="reportedCases">Reported Cases</label>
+                          </div>
+  
+                          <div class="md-form">
+                            <i class="fa fa-bed prefix"></i>
+                            <input class="form-control" name="totalHospitalBeds" id="totalHospitalBeds" data-total-hospital-beds="totalHospitalBeds" type="number">
+                
+                            <label for="totalHospitalBeds">Total Hospital Beds</label>
+                          </div>
+
+                          <div class=md-form>
+                          <i class="fa fa-calendar prefix"></i>
+                          <select style="margin: 40px;" class="browser-default custom-select" name="periodType" id="periodType" data-period-type="periodType">
+                            <option value="days" selected>Period Type</option>
+                            <option value="days">Days</option>
+                            <option value="weeks">Weeks</option>
+                            <option value="months">Months</option>
+                          </select>
+                          </div>
+  
+                          <div class="text-center">
+                            <button data-go-estimate="submit" class="btn btn-indigo btn-rounded mt-5">
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <!--Grid column-->
+
+                      <!--Grid column-->
+                      <div class="col-md-5">
+                        <!--Grid row-->
+                        <div
+                          class="row pb-4 d-flex justify-content-center mb-4"
+                        >
+                          <h4 class="mt-3 mr-4">
+                            <strong>Results</strong>
+                          </h4>
+                        </div>
+                        <!--/Grid row-->
+                      </div>
+                      <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                  </div>
+                </div>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </div>
+        </div>
+      </section>
+      <!--Intro Section-->
+    </header>
+    <!--Main Navigation-->
+
+    <!--  SCRIPTS  -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </body>
+</html>
